@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
- import { Route, Link } from 'react-router-dom';
 import './App.css';
 import Landing from './components/Landing';
 import Library from './components/Library';
@@ -21,7 +20,7 @@ class App extends Component {
           <nav>
             <Link to='/'>Landing</Link>
             <Link to='/library'>Library</Link>
-            <Link to='/album'>Album</Link>
+            
           </nav>
             <h1>Bloc Jams</h1>
           </header>
