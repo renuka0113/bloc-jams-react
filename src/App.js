@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Landing from './components/Landing';
+import Library from './components/Library';
 
 class App extends Component {
   render() {
@@ -11,15 +13,18 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          </header>
+          <header>
+          <nav>
+            <Link to='/'>Landing</Link>
+            <Link to='/library'>Library</Link>
+          </nav>
+            <h1>Bloc Jams</h1>
+          </header>
+          <main>
+          <Route exact path="/" component={Landing} />
+          <Route path="/library" component={Library} />
+          </main>
       </div>
     );
   }
