@@ -5,19 +5,20 @@ class Album extends Component {
   constructor(props) {
     super(props);
 
-    //Now we want to set album property on our state.
-    //First we need to find the album object in albumData which has the slug property equal to this.props.match.params.slug
-//Here, we are find that album object from albumData using .find(), whose slug property will equal this.props.match.params.slug
+
 
 
     const album = albumData.find( album => {
            return album.slug === this.props.match.params.slug
          });
 
-//Here we set the property of the state
+
          this.state = {
            album: album
          };
+         console.log("Constructor Complete. Slug is:");
+        console.log(album);
+        console.log(this.props.match.params.slug);
        }
 
 
@@ -31,8 +32,6 @@ class Album extends Component {
       <h1 id="album-title">{this.state.album.title}</h1>
           <h2 className="artist">{this.state.album.artist}</h2>
           <div id="release-info">{this.state.album.releaseInfo}</div>
-
-
         </div>
      </section>
      <table id="song-list">
@@ -42,12 +41,16 @@ class Album extends Component {
              <col id="song-duration-column" />
            </colgroup>
            <tbody>
-           this.state.album.songs((song,index)=>
-           <tr key={index}>
-           {this.album.songs.title}
-           {this.album.songs.duration}
-           </tr>
+           {
+           this.state.album.songs.map( (song, index) =>
+              <tr key={index}>
+              {song.title}
+              {song.duration}
+              </tr>
+            )
+          }
            </tbody>
+
          </table>
          </section>
 
