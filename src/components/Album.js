@@ -16,10 +16,43 @@ return album.slug === this.props.match.params.slug
 {/*Here we set the property of the state */}
 
 this.state = {
-           album: album
-         };
+           album: album,
 
+
+           currentSong: album.songs[0],
+
+
+           isPlaying: false
+         };
+         this.audioElement = document.createElement('audio'); {/*creating a new audio element */}
+         this.audioElement.src = album.songs[0].audioSrc;{/*set the src property of this.audioElement to the audio source of the first song on the album;because we expect the playback to start with the first song of the album*/}
        }
+
+     play() {
+     this.audioElement.play();
+     this.setState({ isPlaying: true });
+   }
+
+
+   pause() {
+     this.audioElement.pause();
+     this.setState({ isPlaying: false });
+   }
+
+   setSong(song) {
+    this.audioElement.src = song.audioSrc;
+    this.setState({ currentSong: song });
+  }
+
+  handleSongClick(song) {
+    const isSameSong = this.state.currentSong === song;
+    if (this.state.isPlaying && isSameSong) {
+       this.pause();
+     } else {
+       if (!isSameSong) { this.setSong(song); }   
+       this.play();
+     }
+  }
 
 render() {
     return (
@@ -41,7 +74,7 @@ render() {
            <tbody>
            {
            this.state.album.songs.map( (song, index) =>
-              <tr key={index}>
+              <tr key={index} onClick={() => this.handleSongClick(song)}>
               <td>{index+1}</td>
 
               {song.title}
