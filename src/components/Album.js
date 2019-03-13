@@ -49,10 +49,24 @@ this.state = {
     if (this.state.isPlaying && isSameSong) {
        this.pause();
      } else {
-       if (!isSameSong) { this.setSong(song); }   
+       if (!isSameSong) { this.setSong(song); }
        this.play();
      }
   }
+
+handleMouseEnter(song){
+
+   this.setState({hover:true});
+
+  }
+
+
+handleMouseLeave(song){
+  this.setState({hover:false});
+
+}
+
+
 
 render() {
     return (
@@ -66,6 +80,7 @@ render() {
         </div>
      </section>
      <table id="song-list">
+
            <colgroup>
              <col id="song-number-column" />
              <col id="song-title-column" />
@@ -74,8 +89,8 @@ render() {
            <tbody>
            {
            this.state.album.songs.map( (song, index) =>
-              <tr key={index} onClick={() => this.handleSongClick(song)}>
-              <td>{index+1}</td>
+              <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(song)} onMouseLeave={()=>this.handleMouseLeave(song)}>
+              {this.state.hover?<span className="ion-play"><ion-icon name="play"></ion-icon></span>:<td>{index+1}</td>}
 
               {song.title}
               {song.duration}
@@ -83,12 +98,10 @@ render() {
             )
           }
            </tbody>
-
-         </table>
+          </table>
          </section>
-
-    );
-  }
-}
+         );
+       }
+     }
 
 export default Album;
