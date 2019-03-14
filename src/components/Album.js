@@ -57,7 +57,7 @@ this.state = {
 handleMouseEnter(song){
 
    this.setState({hover:true});
-   console.log(song);
+  
 
   }
 
@@ -90,7 +90,7 @@ render() {
            {
            this.state.album.songs.map( (song, index) =>
               <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(song)} onMouseLeave={()=>this.handleMouseLeave(song)}>
-              {this.state.hover?<td><span> className="ion-play"><ion-icon name="play"></ion-icon></span></td>:<td>{index+1}</td>}
+              {this.state.hover?<td><span className="ion-play"><ion-icon name="play"></ion-icon></span></td>:<td>{index+1}</td>}
             <td>  {song.title} </td>
             <td>  {song.duration}</td>
               </tr>
