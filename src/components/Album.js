@@ -54,20 +54,21 @@ this.state = {
      }
   }
 
-handleMouseEnter(song){
-
-   this.setState({hover:true});
-  
-
-  }
-
-
-handleMouseLeave(song){
-  this.setState({hover:false});
-
+handleMouseEnter(index){
+ this.setState({hoveredSong:index});
 }
 
+handleMouseLeave(){
+  this.setState({hoveredSong:null});
+}
 
+renderIcon(index){
+if(this.state.hoveredSong==index){
+return  <td><span className="ion-play"><ion-icon name="play"></ion-icon></span></td>
+}else{
+return  <td>{index+1}</td>
+}
+}
 
 render() {
     return (
@@ -89,8 +90,9 @@ render() {
            <tbody>
            {
            this.state.album.songs.map( (song, index) =>
-              <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(song)} onMouseLeave={()=>this.handleMouseLeave(song)}>
-              {this.state.hover?<td><span className="ion-play"><ion-icon name="play"></ion-icon></span></td>:<td>{index+1}</td>}
+              <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(index)} onMouseLeave={()=>this.handleMouseLeave()}>
+            {/* {this.state.hover?<td><span className="ion-play"><ion-icon name="play"></ion-icon></span></td>:<td>{index+1}</td>}*/}
+            <td>{this.renderIcon(index)}</td>
             <td>  {song.title} </td>
             <td>  {song.duration}</td>
               </tr>
