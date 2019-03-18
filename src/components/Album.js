@@ -71,7 +71,7 @@ if(this.state.hoveredSong==index){
 return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
 }else if(this.state.hoveredSong==null && this.state.isPlaying ){
   return  <td><span className="ion-pause"><i className="ion-md-pause"></i></span></td>
-}else if(this.state.hoveredSong==null && this.state.isPlaying==false){
+}else{
   return <td>{index+1}</td>
 }
 }
