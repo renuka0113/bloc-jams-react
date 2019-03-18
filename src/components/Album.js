@@ -31,6 +31,7 @@ this.state = {
      play() {
      this.audioElement.play();
      this.setState({ isPlaying: true });
+
    }
 
 
@@ -48,6 +49,7 @@ this.state = {
     const isSameSong = this.state.currentSong === song;
     if (this.state.isPlaying && isSameSong) {
        this.pause();
+
      } else {
        if (!isSameSong) { this.setSong(song); }
        this.play();
@@ -63,12 +65,22 @@ handleMouseLeave(){
 }
 
 renderIcon(index){
+
 if(this.state.hoveredSong==index){
-return  <td><span className="ion-play"><ion-icon name="play"></ion-icon></span></td>
+
+return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
 }else{
-return  <td>{index+1}</td>
+  return  <td>{index+1}</td>
 }
 }
+
+renderPauseIcon(song){
+  if(this.state.currentSong==song && this.state.isPlaying){
+    return <td><span className="ion-pause"><i className="ion-md-pause"></i></span></td>
+  }
+}
+
+
 
 render() {
     return (
@@ -91,8 +103,8 @@ render() {
            {
            this.state.album.songs.map( (song, index) =>
               <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(index)} onMouseLeave={()=>this.handleMouseLeave()}>
-            {/* {this.state.hover?<td><span className="ion-play"><ion-icon name="play"></ion-icon></span></td>:<td>{index+1}</td>}*/}
             <td>{this.renderIcon(index)}</td>
+            <td>{this.renderPauseIcon(song)}</td>
             <td>  {song.title} </td>
             <td>  {song.duration}</td>
               </tr>
