@@ -69,16 +69,14 @@ renderIcon(index){
 if(this.state.hoveredSong==index){
 
 return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
+}else if(this.state.hoveredSong==null && this.state.isPlaying ){
+  return  <td><span className="ion-pause"><i className="ion-md-pause"></i></span></td>
 }else{
-  return  <td>{index+1}</td>
+  return <td>{index+1}</td>
 }
 }
 
-renderPauseIcon(song){
-  if(this.state.currentSong==song && this.state.isPlaying){
-    return <td><span className="ion-pause"><i className="ion-md-pause"></i></span></td>
-  }
-}
+
 
 
 
@@ -104,7 +102,7 @@ render() {
            this.state.album.songs.map( (song, index) =>
               <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(index)} onMouseLeave={()=>this.handleMouseLeave()}>
             <td>{this.renderIcon(index)}</td>
-            <td>{this.renderPauseIcon(song)}</td>
+
             <td>  {song.title} </td>
             <td>  {song.duration}</td>
               </tr>
