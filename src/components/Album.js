@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
 class Album extends Component {
   constructor(props) {
@@ -73,6 +74,14 @@ return <td><span className="ion-play"><i className="ion-md-play"></i></span></td
 }
 }
 
+handlePrevClick() {
+  const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+  const newIndex = Math.max(0, currentIndex - 1);
+  const newSong = this.state.album.songs[newIndex];
+  this.setSong(newSong);
+  this.play();
+    }
+
 render() {
     return (
       <section className="album">
@@ -95,7 +104,6 @@ render() {
            this.state.album.songs.map( (song, index) =>
               <tr key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(index)} onMouseLeave={()=>this.handleMouseLeave()}>
             <td>{this.renderIcon(index)}</td>
-
             <td>  {song.title} </td>
             <td>  {song.duration}</td>
               </tr>
@@ -103,6 +111,13 @@ render() {
           }
            </tbody>
           </table>
+          {/* The play data is contained in Album state, but we'll need to access it in PlayerBar, so here we pass down isPlaying and currentSong to PlayerBar as props.*/}
+          <PlayerBar
+          isPlaying={this.state.isPlaying}
+          currentSong={this.state.currentSong}
+          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+          handlePrevClick={() => this.handlePrevClick()}
+        />
          </section>
          );
        }
