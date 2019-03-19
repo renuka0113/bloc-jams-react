@@ -17,12 +17,9 @@ return album.slug === this.props.match.params.slug
 
 this.state = {
            album: album,
-
-
            currentSong: album.songs[0],
-
-
-           isPlaying: false
+           isPlaying: false,
+           hoveredSong:null
          };
          this.audioElement = document.createElement('audio'); {/*creating a new audio element */}
          this.audioElement.src = album.songs[0].audioSrc;{/*set the src property of this.audioElement to the audio source of the first song on the album;because we expect the playback to start with the first song of the album*/}
@@ -31,9 +28,7 @@ this.state = {
      play() {
      this.audioElement.play();
      this.setState({ isPlaying: true });
-
    }
-
 
    pause() {
      this.audioElement.pause();
@@ -65,11 +60,13 @@ handleMouseLeave(){
 }
 
 renderIcon(index){
-
+let isCurrentSong = this.state.album.songs.indexOf(this.state.currentSong)==index;
+if(isCurrentSong && !this.state.isPlaying){
+  return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
+}
 if(this.state.hoveredSong==index){
-
 return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
-}else if(this.state.hoveredSong==null && this.state.isPlaying ){
+}else if(this.state.hoveredSong==null && this.state.isPlaying && isCurrentSong){
   return  <td><span className="ion-pause"><i className="ion-md-pause"></i></span></td>
 }else{
   return <td>{index+1}</td>
