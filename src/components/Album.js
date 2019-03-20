@@ -5,16 +5,12 @@ import PlayerBar from './PlayerBar';
 class Album extends Component {
   constructor(props) {
     super(props);
-{/* Now we want to set album property on our state.*/}
-{/* First we need to find the album object in albumData which has the slug property equal to
-this.props.match.params.slug*/}
-{/*Here, we are find that album object from albumData using .find(), whose slug property will equal
-this.props.match.params.slug */}
+
 
 const album = albumData.find( album => {
 return album.slug === this.props.match.params.slug
          });
-{/*Here we set the property of the state */}
+
 
 this.state = {
            album: album,
@@ -22,9 +18,9 @@ this.state = {
            isPlaying: false,
            hoveredSong:null
          };
-         this.audioElement = document.createElement('audio'); {/*creating a new audio element */}
-         this.audioElement.src = album.songs[0].audioSrc;{/*set the src property of this.audioElement to the audio source of the first song on the album;because we expect the playback to start with the first song of the album*/}
-       }
+         this.audioElement = document.createElement('audio');
+         this.audioElement.src = album.songs[0].audioSrc;
+          }
 
      play() {
      this.audioElement.play();
@@ -61,11 +57,11 @@ handleMouseLeave(){
 }
 
 renderIcon(index){
-let isCurrentSong = this.state.album.songs.indexOf(this.state.currentSong)==index;
+let isCurrentSong = this.state.album.songs.indexOf(this.state.currentSong)===index;
 if(isCurrentSong && !this.state.isPlaying){
   return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
 }
-if(this.state.hoveredSong==index){
+if(this.state.hoveredSong===index){
 return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
 }else if(this.state.hoveredSong==null && this.state.isPlaying && isCurrentSong){
   return  <td><span className="ion-pause"><i className="ion-md-pause"></i></span></td>
@@ -80,6 +76,20 @@ handlePrevClick() {
   const newSong = this.state.album.songs[newIndex];
   this.setSong(newSong);
   this.play();
+    }
+
+    handleNextClick(){
+    const presentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    const noOfSongs = this.state.albums.songs.length;
+    const nextIndex = presentIndex+1;
+    if(nextIndex === noOfSongs){
+      var newNextIndex = presentIndex;
+    }else{
+      newNextIndex = Math.min(noOfSongs,nextIndex);
+    }
+    const newNextSong = this.state.album.songs[newNextIndex];
+    this.setSong(newNextSong);
+    this.play();
     }
 
 render() {
@@ -111,12 +121,13 @@ render() {
           }
            </tbody>
           </table>
-          {/* The play data is contained in Album state, but we'll need to access it in PlayerBar, so here we pass down isPlaying and currentSong to PlayerBar as props.*/}
+
           <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
+          handleNextClick={()=>this.handleNextClick()}
         />
          </section>
          );
