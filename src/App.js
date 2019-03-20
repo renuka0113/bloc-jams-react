@@ -19,7 +19,9 @@ class App extends Component {
           <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
-
+          {/* <Route path="/album/" component={Album} */}
+          {/*we modified the above path; the reason is that we want each album to have its own unique path*/}
+          {/*for this reason we add a URL parameter*/}
           <Route path="/album/:slug" component={Album}/>
           </main>
       </div>

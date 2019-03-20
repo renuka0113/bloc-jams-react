@@ -5,21 +5,25 @@ import PlayerBar from './PlayerBar';
 class Album extends Component {
   constructor(props) {
     super(props);
-
+    {/* Now we want to set album property on our state.*/}
+    {/* First we need to find the album object in albumData which has the slug property equal to
+    this.props.match.params.slug*/}
+    {/*Here, we are find that album object from albumData using .find(), whose slug property will equal
+    this.props.match.params.slug */}
 
 const album = albumData.find( album => {
 return album.slug === this.props.match.params.slug
          });
 
-
+{/*Here we set the property of the state */}
 this.state = {
            album: album,
            currentSong: album.songs[0],
            isPlaying: false,
            hoveredSong:null
          };
-         this.audioElement = document.createElement('audio');
-         this.audioElement.src = album.songs[0].audioSrc;
+         this.audioElement = document.createElement('audio');{/*creating a new audio element */}
+         this.audioElement.src = album.songs[0].audioSrc;{/*set the src property of this.audioElement to the audio source of the first song on the album;because we expect the playback to start with the first song of the album*/}
           }
 
      play() {
@@ -128,7 +132,9 @@ render() {
           }
            </tbody>
           </table>
-
+          {/* The play data is contained in Album state, but we'll need to access it in PlayerBar, so here we pass down
+          isPlaying and currentSong to PlayerBar as props.*/}
+          {/*So, isPlaying,currentSong,handleSongClick,handlePrevClick,handleNextClick are all passed down as props from Album.js to PlayerBar */}
           <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
