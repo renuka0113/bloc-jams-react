@@ -63,7 +63,7 @@ handleMouseLeave(){
 renderIcon(index){
 let isCurrentSong = this.state.album.songs.indexOf(this.state.currentSong)===index;
 if(isCurrentSong && !this.state.isPlaying){
-  return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
+  return <td><span className="ion-md-play"><i className="ion-md-play"></i></span></td>
 }
 if(this.state.hoveredSong===index){
 return <td><span className="ion-play"><i className="ion-md-play"></i></span></td>
