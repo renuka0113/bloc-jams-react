@@ -2,7 +2,7 @@ import React from 'react';
 
 const Landing=()=>(
   <section className="landing">
-   Landing page will go here
+   
    <h1 className="hero-title">Turn the music up!</h1>
 
     <section className="selling-points">
