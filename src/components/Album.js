@@ -158,8 +158,9 @@ class Album extends Component {
   }
 
 handleVolumeChange(e){
+  console.log("handleVolumeChange is called");
   const newVolume=e.target.value;
-  this.audioElement.currentVolume=newVolume;
+  this.audioElement.volume=newVolume;
   this.setState({currentVolume:newVolume});
 }
 
