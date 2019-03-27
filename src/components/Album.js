@@ -137,22 +137,21 @@ class Album extends Component {
     var minsString;
     var secString;
     var completedTimeString;
-
-    if(isNaN(seconds)){
+    if(isNaN(seconds)){  {/*if time is invalid or not a number then return -:--*/}
       return completedTimeString="-:--";
-    } else if(seconds>60){
-      mins=Math.trunc(seconds/60);
-      sec=seconds%60;
-    }else if(seconds<=60){
+    } else if(seconds>60){  {/*here we check if the seconds input argument is greater than 60m if it is, we want to get it in minutes:seconds format*/}
+      mins=Math.trunc(seconds/60); {/* the quotient will fetch the minutes part */}
+      sec=Math.trunc(seconds%60); {/*the remainder will fetch the seconds part*/}
+    }else if(seconds<=60){    {/*if the input argument itself is say 45 seconds,then there is no need to calculate, just display 0:45 */}
       mins=0;
       sec=seconds;
     }
-    if(sec<10){
+    if(sec<10){   {/*if the remainder is say,5 seconds,and minutes or quoties is 4, then you want to display 4:05, this is what we are doing here  */}
       secString="0"+sec.toString();
     }else if(sec>10){
       secString=sec.toString();
     }
-    minsString=mins.toString();
+    minsString=mins.toString();{/*coverting minutes number to string format */}
     completedTimeString=minsString+":"+secString;
     return completedTimeString;
   }
@@ -189,7 +188,10 @@ handleVolumeChange(e){
             <tr key={index} onClick={() =>this.handleSongClick(song)} onMouseEnter={()=>this.handleMouseEnter(index)} onMouseLeave={()=>this.handleMouseLeave()}>
             {this.renderIcon(index)}
             <td>  {song.title} </td>
-            <td>  {song.duration}</td>
+            { /*<td>{song.duration}</td>  */}  {/*this displays the song duration in seconds as say,161.71, but to display it in teh format mintes:seconds, call it in the formatTime function */}
+            {/* <td>formatTime{song.duration}</td> */}  {/* if you do this,you will see "formatTime", the name of the function on the webpage,you dont want this: Blue	formatTime161.71 ,so enclose formatTime in curly braces*/}
+             {/*<td> {formatTime(song.duration)}</td>*/} {/*this will give you a compile error that formatTime is not defined. So we will do this.formatTime */}
+            <td>  {this.formatTime(song.duration)}</td> {/*now you will see Blue	2:41 which means duration of the song is 2minutes 41seconds */}
             </tr>
           )
         }
@@ -209,6 +211,7 @@ handleVolumeChange(e){
         handleTimeChange={(e) => this.handleTimeChange(e)}
         currentVolume={this.state.currentVolume}
         handleVolumeChange = {(e)=>this.handleVolumeChange(e)}
+        formatTime={()=>this.formatTime(this.seconds)}
         />
         </section>
       );
