@@ -211,7 +211,7 @@ handleVolumeChange(e){
         handleTimeChange={(e) => this.handleTimeChange(e)}
         currentVolume={this.state.currentVolume}
         handleVolumeChange = {(e)=>this.handleVolumeChange(e)}
-        formatTime={()=>this.formatTime(this.seconds)}
+        formatTime={(e)=>this.formatTime(e)}
         />
         </section>
       );
