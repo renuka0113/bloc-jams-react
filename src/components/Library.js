@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
  import albumData from './../data/albums';
   import { Link } from 'react-router-dom';
+  import './Library.css';
 
 class Library extends Component{
   constructor(props){

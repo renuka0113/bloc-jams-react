@@ -209,6 +209,7 @@ handleVolumeChange(e){
         currentTime={this.audioElement.currentTime}
         duration={this.audioElement.duration}
         handleTimeChange={(e) => this.handleTimeChange(e)}
+        
         currentVolume={this.state.currentVolume}
         handleVolumeChange = {(e)=>this.handleVolumeChange(e)}
         formatTime={(e)=>this.formatTime(e)}
