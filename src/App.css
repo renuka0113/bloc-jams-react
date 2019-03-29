@@ -19,6 +19,12 @@
   color: white;
 }
 
+a:-webkit-any-link{
+ color: #00ff00;
+ padding-left:15px;
+ font-weight: 900;
+}
+
 .App-link {
   color:black;
   }
