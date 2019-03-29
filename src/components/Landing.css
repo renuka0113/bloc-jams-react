@@ -1,19 +1,19 @@
 body{
-  background-image: linear-gradient(180deg,#00a0ee,#3668ff 50%);
-  background-color: #3668ff;
+  background-color: #0E77CC;
+  background: linear-gradient(45deg, rgb(0,160,238) 0%, rgb(56,106,255) 75%);
   padding:25px;
   font-family: Monospace;
   text-align: center;
   }
 
 h1{
-   color: white;
+   color: black;
    font-size:48px;
    font-weight:900;
   }
 
 h2{
-  color:white;
+  color:black;
   font-size:32px;
   }
 
