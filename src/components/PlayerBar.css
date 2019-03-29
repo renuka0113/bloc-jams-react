@@ -1,0 +1,39 @@
+input[type="range" i]{
+
+   -webkit-appearance: slider-horizontal;
+    color: rgb(51,51,0);
+    cursor: default;
+    padding-top:1px;
+    border: initial;
+    margin: 2px;
+    width: 400px;
+    height: 50px;
+    }
+ 
+section#buttons{
+padding:50px;
+}
+
+button#previous{
+padding:4px 30px;
+}
+
+button#play-pause{
+padding:4px 30px;
+}
+
+button#next{
+padding:4px 30px;
+}
+
+div.current-time{
+padding-bottom:1px;
+}
+
+div.total-time{
+padding-top:1px;
+}
+
+div.icon-md-ion-volume-low{
+padding-top:45px;
+}
