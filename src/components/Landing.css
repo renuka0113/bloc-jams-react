@@ -1,9 +1,9 @@
 body{
   background-color: #0E77CC;
-  background: linear-gradient(45deg, rgb(0,160,238) 0%, rgb(56,106,255) 75%); 
   padding:25px;
   font-family: Monospace;
   text-align: center;
+  background-image:url("music-logo.jpg");
     }
 
 h1{
