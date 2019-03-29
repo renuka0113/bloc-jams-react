@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import './Album.css';
 
 class Album extends Component {
   constructor(props) {
@@ -144,11 +145,11 @@ class Album extends Component {
       sec=Math.trunc(seconds%60); {/*the remainder will fetch the seconds part*/}
     }else if(seconds<=60){    {/*if the input argument itself is say 45 seconds,then there is no need to calculate, just display 0:45 */}
       mins=0;
-      sec=seconds;
+      sec=Math.trunc(seconds);
     }
-    if(sec<10){   {/*if the remainder is say,5 seconds,and minutes or quoties is 4, then you want to display 4:05, this is what we are doing here  */}
+    if(sec<10){   {/*if the remainder is say,5 seconds,and minutes or quotient is 4, then you want to display 4:05, this is what we are doing here  */}
       secString="0"+sec.toString();
-    }else if(sec>10){
+    }else if(sec>=10){
       secString=sec.toString();
     }
     minsString=mins.toString();{/*coverting minutes number to string format */}
@@ -209,7 +210,7 @@ handleVolumeChange(e){
         currentTime={this.audioElement.currentTime}
         duration={this.audioElement.duration}
         handleTimeChange={(e) => this.handleTimeChange(e)}
-        
+
         currentVolume={this.state.currentVolume}
         handleVolumeChange = {(e)=>this.handleVolumeChange(e)}
         formatTime={(e)=>this.formatTime(e)}
