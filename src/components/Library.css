@@ -1,5 +1,5 @@
 body{
-  background-color:linear-gradient(180deg,#00a0ee,#3668ff 50%);
+  
   padding:25px;
   margin:25px;
   font-family: Monospace;
@@ -7,4 +7,7 @@ body{
   font-size:22px;
   }
 
-
+.App img{
+width:10%;
+height:10%;
+}

@@ -1,9 +1,12 @@
 body{
-  background-color: #0E77CC;
+  
   padding:25px;
   font-family: Monospace;
   text-align: center;
-  background-image:url("music-logo.jpg");
+  background-image:url("guitar-logo.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+
     }
 
 h1{
@@ -18,6 +21,7 @@ h2{
   }
 
 p{
-  color:black;
-  font-size:22px;
+  color:white;
+  font-size:40px;
+font-weight:600;
 }

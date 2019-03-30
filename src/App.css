@@ -23,9 +23,9 @@
 }
 
 a:-webkit-any-link{
- color: #00ff00;
+ color: #ff0066;
  padding-left:15px;
- font-weight: 900;
+ font-weight: 100;
 }
 
 .App-link {
