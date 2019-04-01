@@ -8,6 +8,11 @@ body{
   }
 
 .App img{
-width:10%;
-height:10%;
+width:20%;
+height:20%;
+}
+
+section.library{
+display:grid;
+grid-template-columns: 200px 200px 200px;
 }

@@ -25,7 +25,8 @@
 a:-webkit-any-link{
  color: #ff0066;
  padding-left:15px;
- font-weight: 100;
+ font-weight: 20;
+font-size:18px;
 }
 
 .App-link {
